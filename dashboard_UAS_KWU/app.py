@@ -116,10 +116,18 @@ st.markdown("""
         box-shadow: 0 6px 12px rgba(255, 111, 0, 0.4);
     }
     
-    .stAlert {
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
+    /* 7. Pesan Alert (Success/Warning/Info) */
+.stAlert {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    color: #333333 !important; /* INI PENYELAMATNYA: Paksa tulisan jadi hitam */
+}
+
+/* Paksa juga ikon dan elemen markdown di dalamnya jadi gelap */
+.stAlert p, .stAlert span, .stAlert label, .stAlert svg {
+    color: #333333 !important;
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -323,4 +331,5 @@ elif menu == "Data Mentah":
     # Langsung tabel, bersih tanpa angka-angka di atas
 
     st.dataframe(df_filtered.style.background_gradient(cmap="OrRd"), use_container_width=True)
+
 
