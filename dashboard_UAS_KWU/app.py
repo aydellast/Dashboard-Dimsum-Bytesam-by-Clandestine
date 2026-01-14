@@ -129,10 +129,14 @@ st.markdown("""
 @st.cache_data
 def load_data():
     try:
-        df = pd.read_csv("dataset_penjualan.csv")
+        # GANTI URL DI BAWAH INI dengan link RAW yang kamu copy tadi
+        url_csv = "https://raw.githubusercontent.com/USERNAME_KAMU/NAMA_REPO/main/dataset_penjualan.csv"
+        
+        df = pd.read_csv(url_csv) # Baca langsung dari internet
         df["Tanggal"] = pd.to_datetime(df["Tanggal"])
         return df
-    except FileNotFoundError:
+    except Exception as e:
+        st.error(f"❌ Terjadi kesalahan saat membaca data: {e}")
         return None
 
 df = load_data()
@@ -317,4 +321,5 @@ elif menu == "Insight Bisnis":
 elif menu == "Data Mentah":
     st.subheader("📂 Data Penjualan Mentah")
     # Langsung tabel, bersih tanpa angka-angka di atas
+
     st.dataframe(df_filtered.style.background_gradient(cmap="OrRd"), use_container_width=True)
