@@ -130,7 +130,7 @@ st.markdown("""
 def load_data():
     try:
         # GANTI URL DI BAWAH INI dengan link RAW yang kamu copy tadi
-        url_csv = "https://raw.githubusercontent.com/USERNAME_KAMU/NAMA_REPO/main/dataset_penjualan.csv"
+        url_csv = "https://raw.githubusercontent.com/aydellast/Dashboard-Dimsum-Bytesam-by-Clandestine/refs/heads/main/dashboard_UAS_KWU/dataset_penjualan.csv"
         
         df = pd.read_csv(url_csv) # Baca langsung dari internet
         df["Tanggal"] = pd.to_datetime(df["Tanggal"])
@@ -323,3 +323,4 @@ elif menu == "Data Mentah":
     # Langsung tabel, bersih tanpa angka-angka di atas
 
     st.dataframe(df_filtered.style.background_gradient(cmap="OrRd"), use_container_width=True)
+
