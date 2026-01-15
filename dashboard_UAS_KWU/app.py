@@ -79,6 +79,16 @@ st.markdown("""
         overflow: hidden;
     }
 
+    div[data-testid="stMetricLabel"] > div {
+        color: #5D4037 !important; /* Warna coklat gelap */
+        font-weight: 600 !important;
+    }
+    
+    /* Memaksa angka metric tetap orange gelap */
+    div[data-testid="stMetricValue"] > div {
+        color: #E65100 !important;
+    }
+    
     div[data-testid="stMetric"]:hover {
         transform: translateY(-5px) scale(1.02);
         box-shadow: 0 10px 20px rgba(255, 111, 0, 0.2);
@@ -116,21 +126,29 @@ st.markdown("""
         box-shadow: 0 6px 12px rgba(255, 111, 0, 0.4);
     }
     
-    /* 7. Pesan Alert (Success/Warning/Info) */
-div[data-testid="stAlert"] {
+/* 7. Pesan Alert (Success/Warning/Info) */
+    div[data-testid="stAlert"] {
         padding: 1rem !important;
     }
     
+    /* MEMAKSA SEMUA teks di dalam kotak (p, span, li, h4) jadi Abu Tua Gelap */
     div[data-testid="stAlert"] p, 
     div[data-testid="stAlert"] span, 
     div[data-testid="stAlert"] li,
-    div[data-testid="stAlert"] h4 {
-        color: #37474F !important; /* <--- Ini warnanya (Bukan hitam pekat, tapi abu tua deep) */
+    div[data-testid="stAlert"] h4,
+    div[data-testid="stAlert"] label {
+        color: #37474F !important; /* Deep Blue Grey */
     }
     
-    /* Ikon (Tanda seru/Info) mengikuti warna teks */
+    /* Ikon tanda seru/info juga dipaksa gelap */
     div[data-testid="stAlert"] svg {
         fill: #37474F !important;
+    }
+
+    /* Memaksa teks markdown biasa tetap gelap agar kontras dengan bg putih aplikasi */
+    .stMarkdown p, .stMarkdown h4, .stMarkdown li {
+        color: #37474F !important;
+    }
         
 </style>
 """, unsafe_allow_html=True)
@@ -335,6 +353,9 @@ elif menu == "Data Mentah":
     # Langsung tabel, bersih tanpa angka-angka di atas
 
     st.dataframe(df_filtered.style.background_gradient(cmap="OrRd"), use_container_width=True)
+
+
+
 
 
 
